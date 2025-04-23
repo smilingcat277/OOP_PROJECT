@@ -6,6 +6,29 @@ int main()
     sf::RenderWindow window(sf::VideoMode(1500, 1000), "SFML works!");
     const float TILE_SIZE = 100.f;
 
+    sf::Font font;
+    sf::Text text1;
+    if (!font.loadFromFile("CONSOLAB.TTF")){
+        return -1;
+    }
+
+    text1.setFont(font);
+    text1.setString("Level 1");
+    text1.setCharacterSize(100.f);
+    text1.setFillColor(sf::Color::Black);
+    text1.setPosition(sf::Vector2f(615.f, 100.f));
+
+    sf::Text text2;
+    if (!font.loadFromFile("CONSOLAB.TTF")){
+        return -1;
+    }
+
+    text2.setFont(font);
+    text2.setString("Level 2");
+    text2.setCharacterSize(100.f);
+    text2.setFillColor(sf::Color::White);
+    //text2.setPosition(sf::Vector2f(615.f, 100.f));
+
     sf::RectangleShape player(sf::Vector2f(50.f, 50.f));
     player.setPosition(sf::Vector2f(0.f, 0.f));
     player.setFillColor(sf::Color::White);
@@ -72,12 +95,8 @@ int main()
             }
         }
 
-        int centerX = (nextPosition.x + player.getSize().x / 2) / TILE_SIZE;
-        int centerY = (nextPosition.y + player.getSize().x / 2) / TILE_SIZE;
-
         //std::cout << centerX << ", " << centerY << std::endl;
 
-        //boundaries
         if (nextPosition.x < 0.f){
             nextPosition.x = 0.f;
         }
@@ -98,6 +117,7 @@ int main()
         
         // rectangle1.setPosition(position);
         window.draw(rectangle2);
+        window.draw(text1);
         window.draw(player);
         window.display();
         window.clear();
