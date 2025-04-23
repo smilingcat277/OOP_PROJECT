@@ -32,9 +32,12 @@ int main()
     sf::RectangleShape player(sf::Vector2f(50.f, 50.f));
     player.setPosition(sf::Vector2f(0.f, 0.f));
     player.setFillColor(sf::Color::White);
+
     sf::RectangleShape rectangle2(sf::Vector2f(1600.f, 1000.f));
     rectangle2.setPosition(sf::Vector2f(1600.f, 0.f));
     rectangle2.setFillColor(sf::Color(100, 100, 100));
+
+    bool levelComplete = false;
 
     int maze[10][16] = {
         {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
@@ -100,7 +103,10 @@ int main()
         if (nextPosition.x < 0.f){
             nextPosition.x = 0.f;
         }
-        if ((nextPosition.x + 50.f) > 1600.f && nextPosition.y + 50.f != 600.f){
+        if ((nextPosition.x + 50.f > 1600.f) && (nextPosition.y >= 500.f && nextPosition.y + 50.f <= 600.f)){
+            nextPosition = player.getPosition();
+        }
+        else if ((nextPosition.x + 50.f) > 1600.f && nextPosition.x + 50.f < 1660){
             nextPosition.x = 1550.f;
         }
         if (nextPosition.y < 0.f){
@@ -109,10 +115,7 @@ int main()
         if ((nextPosition.y + 50.f) > 1000.f){
             nextPosition.y = 950.f;
         }
-        if ((nextPosition.x + 50.f > 1600.f) && (nextPosition.y + 50.f >= 600.f && nextPosition.y + 50.f <= 700.f)){
-            continue;
-        }
-
+        
         player.setPosition(nextPosition);
         
         // rectangle1.setPosition(position);
