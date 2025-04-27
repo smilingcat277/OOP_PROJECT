@@ -1,5 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include<iostream>
+#include"map1.h"
 
 int main()
 {   
@@ -39,19 +40,6 @@ int main()
 
     bool levelComplete = false;
 
-    int maze[10][16] = {
-        {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-        {0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-        {1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1},
-        {1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1},
-        {1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1},
-        {1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0},
-        {0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1},
-        {1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1},
-        {1, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 1, 1, 0, 1},
-        {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1},
-    };
-
     sf::View camera;
     camera.setSize(sf::Vector2f(1000.f, 900.f));
     
@@ -81,7 +69,7 @@ int main()
         }
         
         sf::Vector2f position = player.getPosition();
-        sf::Vector2f nextPosition = position;
+        sf::Vector2f prevPosition = position;
         player.setPosition(position);
 
         for (int row = 0; row < 10; ++row) {
@@ -89,7 +77,7 @@ int main()
                 sf::RectangleShape tile(sf::Vector2f(TILE_SIZE, TILE_SIZE));
                 tile.setPosition(col * TILE_SIZE, row * TILE_SIZE);
 
-                if (maze[row][col] == 1)
+                if (map1[row][col] == 1)
                     tile.setFillColor(sf::Color::Yellow);
                 else
                     tile.setFillColor(sf::Color(100, 100, 100));
@@ -98,25 +86,44 @@ int main()
             }
         }
 
-        //std::cout << centerX << ", " << centerY << std::endl;
-
-        if (nextPosition.x < 0.f){
-            nextPosition.x = 0.f;
+        //std::cout << position.x << " " << prevPosition.x << std::endl;
+        //boundaries and exit
+        if (position.x < 0.f){
+            position.x = 0.f;
         }
-        if ((nextPosition.x + 50.f > 1600.f) && (nextPosition.y >= 500.f && nextPosition.y + 50.f <= 600.f)){
-            nextPosition = player.getPosition();
+        if ((position.x + 50.f > 1600.f) && (position.y >= 500.f && position.y + 50.f <= 600.f)){
+            position = player.getPosition();
         }
-        else if ((nextPosition.x + 50.f) > 1600.f && nextPosition.x + 50.f < 1660){
-            nextPosition.x = 1550.f;
+        else if ((position.x + 50.f) > 1600.f && position.x + 50.f < 1660){
+            position.x = 1550.f;
         }
-        if (nextPosition.y < 0.f){
-            nextPosition.y = 0.f;
+        if (position.y < 0.f){
+            position.y = 0.f;
         }
-        if ((nextPosition.y + 50.f) > 1000.f){
-            nextPosition.y = 950.f;
+        if ((position.y + 50.f) > 1000.f){
+            position.y = 950.f;
         }
         
-        player.setPosition(nextPosition);
+        if (position.x + 50.f > 200.f && position.x < 260.f && position.y >= 0.f && position.y + 50.f < 800.f){
+            position.x = 150.f;
+        }
+        if (position.x < 100.f && position.y >= 200.f){
+            position.x = 100.f;
+        }
+        if (position.x < 100.f && position.y + 50.f >= 200.f){
+             position.y = 150.f;
+        }
+        if (position.y + 50.f >= 900.f && position.x >= 100.f && position.x + 50.f <= 400.f){
+            position.y = 850.f;
+        }
+        if (position.x + 50.f >= 400.f && position.y + 50.f <= 900.f && position.y + 50.f >= 800.f){
+            position.x = 350.f;
+        }
+        // if (position.x < 100.f && position.y <= 600.f){
+        //     position.y = 600.f;
+        // }
+
+        player.setPosition(position);
         
         // rectangle1.setPosition(position);
         window.draw(rectangle2);
