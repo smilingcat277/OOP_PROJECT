@@ -80,4 +80,21 @@ void handlePlayerCollision(sf::RectangleShape& player, bool& levelComplete) {
 
         player.setPosition(position);
     }
+
+    if (levelComplete){
+        //std::cout << position.x << " " << position.y << std::endl;
+        if (position.x <= 1600.f){
+            position.x = 1600.f;
+        }
+        if (position.x + 50.f >= 3200.f){
+            position.x = 3150.f;
+        }
+        if (position.y + 50.f >= 1000.f){
+            position.y = 950.f;
+        }
+        if (position.y <= 0.f){
+            position.y = 0.f;
+        }
+        player.setPosition(position);
+    }
 }
