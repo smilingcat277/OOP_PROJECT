@@ -1,0 +1,71 @@
+#include "player.h"
+#include <iostream>
+
+void handlePlayerMovement(sf::RectangleShape& player) {
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
+        player.move(1.f, 0.f);
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
+        player.move(-1.f, 0.f);
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
+        player.move(0.f, -1.f);
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
+        player.move(0.f, 1.f);
+    }
+}
+
+void handlePlayerCollision(sf::RectangleShape& player, bool& levelComplete) {
+    sf::Vector2f position = player.getPosition();
+    player.setPosition(position);
+
+    //std::cout << position.x << " " << position.y << std::endl;
+    if (!levelComplete){
+        if (position.x < 0.f){
+            position.x = 0.f;
+        }
+        if ((position.x + 50.f > 1600.f) && (position.y >= 500.f && position.y + 50.f <= 600.f)){
+            position = player.getPosition();
+            levelComplete = true;
+        }
+        else if ((position.x + 50.f) > 1600.f && position.x + 50.f < 1660){
+            position.x = 1550.f;
+        }
+        if (position.y < 0.f){
+            position.y = 0.f;
+        }
+        if ((position.y + 50.f) > 1000.f){
+            position.y = 950.f;
+        }
+        if (position.x + 50.f > 200.f && position.x < 260.f && position.y >= 0.f && position.y + 50.f < 600.f){
+            position.x = 150.f;
+        }
+        if (position.x < 100.f && position.y >= 200.f){
+            position.x = 100.f;
+        }
+        if (position.x < 100.f && position.y + 50.f >= 200.f){
+            position.y = 150.f;
+        }
+        if (position.y + 50.f >= 900.f && position.x >= 100.f && position.x + 50.f <= 400.f){
+            position.y = 850.f;
+        }
+        if (position.x + 50.f >= 400.f && position.x + 50.f <= 401.f  && position.y + 50.f <= 900.f && position.y + 50.f >= 800.f){
+            position.x = 350.f;
+        }
+        if (position.x >= 360.f && position.x <= 780.f && position.y + 50.f >= 800.f){
+            position.y = 750.f;
+        }
+        if (position.y <= 600.f && position.x >= 200.f && position.x <= 900.f){
+            position.y = 600.f;
+        }
+        if (position.x + 50.f >= 900.f && position.y >= 600.f && position.y <= 800.f){
+            position.x = 850.f;
+        }
+        if (position.x <= 800.f && position.x >= 799.f && position.y >= 800.f && position.y + 50.f <= 900.f){
+            position.x = 800.f;
+        }
+
+        player.setPosition(position);
+    }
+}
