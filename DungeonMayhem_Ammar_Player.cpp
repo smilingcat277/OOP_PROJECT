@@ -38,7 +38,10 @@ void handlePlayerCollision(sf::RectangleShape& player, bool& levelComplete) {
         if ((position.y + 50.f) > 1000.f){
             position.y = 950.f;
         }
-        if (position.x + 50.f > 200.f && position.x < 260.f && position.y >= 0.f && position.y + 50.f < 600.f){
+        if (position.x + 50.f > 200.f && position.x < 260.f && position.y >= 0.f && position.y + 50.f < 400.f){
+            position.x = 150.f;
+        }
+        if (position.x + 50.f > 200.f && position.x < 260.f && position.y + 50.f >= 500.f && position.y + 50.f < 600.f){
             position.x = 150.f;
         }
         if (position.x < 100.f && position.y >= 200.f){
@@ -56,14 +59,23 @@ void handlePlayerCollision(sf::RectangleShape& player, bool& levelComplete) {
         if (position.x >= 360.f && position.x <= 780.f && position.y + 50.f >= 800.f){
             position.y = 750.f;
         }
-        if (position.y <= 600.f && position.x >= 200.f && position.x <= 900.f){
+        if (position.y <= 600.f && position.y >= 599.f && position.x >= 200.f && position.x <= 900.f){
             position.y = 600.f;
         }
-        if (position.x + 50.f >= 900.f && position.y >= 600.f && position.y <= 800.f){
+        if (position.y >= 600.f && position.y <= 780.f && position.x + 50.f >= 900.f && position.x + 50.f <= 901.f){
             position.x = 850.f;
         }
         if (position.x <= 800.f && position.x >= 799.f && position.y >= 800.f && position.y + 50.f <= 900.f){
             position.x = 800.f;
+        }
+        if (position.x >= 800.f && position.x + 50.f <= 1100.f && position.y + 50.f >= 900.f){
+            position.y = 850.f;
+        }
+        if (position.x >= 900.f && position.x + 50.f <= 1100.f && position.y <= 800.f && position.y >= 799.f){
+            position.y = 800.f;
+        }
+        if (position.y >= 800.f && position.y + 50.f <= 900.f && position.x + 50.f >= 1100.f && position.x + 50.f <= 1101.f){
+            position.x = 1050.f;
         }
 
         player.setPosition(position);
