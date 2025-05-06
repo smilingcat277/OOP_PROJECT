@@ -38,11 +38,11 @@ void handlePlayerCollision(sf::RectangleShape& player, bool& levelComplete) {
         if ((position.y + 50.f) > 1000.f){
             position.y = 950.f;
         }
-        if (position.x + 50.f > 200.f && position.x < 260.f && position.y >= 0.f && position.y + 50.f < 400.f){
+        if (position.x + 50.f > 200.f && position.x < 201.f && position.y >= 0.f && position.y + 50.f < 400.f){
             position.x = 150.f;
         }
-        if (position.x + 50.f > 200.f && position.x < 260.f && position.y + 50.f >= 500.f && position.y + 50.f < 600.f){
-            position.x = 150.f;
+        if (position.x + 50.f > 200.f && position.x < 201.f && position.y + 50.f >= 500.f && position.y < 600.f){
+          position.x = 150.f;
         }
         if (position.x < 100.f && position.y >= 200.f){
             position.x = 100.f;
@@ -76,6 +76,45 @@ void handlePlayerCollision(sf::RectangleShape& player, bool& levelComplete) {
         }
         if (position.y >= 800.f && position.y + 50.f <= 900.f && position.x + 50.f >= 1100.f && position.x + 50.f <= 1101.f){
             position.x = 1050.f;
+        }
+        if (position.x >= 200.f && position.x + 50.f <= 1100.f && position.y + 50.f >= 500.f && position.y + 50.f <= 501.f){
+            position.y = 450.f;
+        }
+        if (position.y + 50.f <= 500.f && position.y >= 400.f && position.x + 50.f >= 1100.f && position.x + 50.f <= 1101.f){
+            position.x = 1050.f;
+        }
+        if (position.y + 50.f <= 500.f && position.y >= 100.f && position.x <= 400.f && position.x >= 399.f){
+            position.x = 400.f;
+        }
+        if (position.x >= 400.f && position.x + 50.f <= 1500.f && position.y <= 100.f && position.y >= 99.f){
+            position.y = 100.f;
+        }
+        if (position.x >= 450.f && position.x + 50.f <= 1100.f && position.y <= 400.f && position.y >= 399.f){
+            position.y = 400.f;
+        }
+        if (position.y >= 150.f && position.y + 50.f <= 450.f && position.x + 50.f >= 500.f && position.x + 50.f <= 501.f){
+            position.x = 450.f;
+        }
+        if (position.x + 50.f >= 500.f && position.x + 50.f <= 1250.f && position.y + 50.f >= 200.f && position.y <= 151.f){
+            position.y = 150.f;
+        }
+        if (position.y + 50.f >= 200.f && position.y + 50.f <= 800.f && position.x <= 1200.f && position.x >= 1199.f){
+            position.x = 1200.f;
+        }
+        if (position.x >= 1200.f && position.x <= 1400.f && position.y + 50.f >= 800.f){
+            position.y = 750.f;
+        }
+        if (position.y >= 100.f && position.y + 50.f <= 200.f && position.x + 50.f >= 1500.f){
+            position.x = 1450.f;
+        }
+        if (position.x + 50.f >= 1300.f && position.x + 50.f <= 1500.f && position.y + 50.f >= 200.f && position.y + 50.f <= 201.f){
+            position.y = 150.f;
+        }
+        if (position.y + 50.f >= 200.f && position.y <= 700.f && position.x + 50.f >= 1300.f && position.x + 50.f <= 1301.f){
+            position.x = 1250.f;
+        }
+        if (position.x + 50.f >= 1300.f && position.x <= 1400.f && position.y <= 700.f && position.y >= 699.f){
+            position.y = 700.f;
         }
 
         player.setPosition(position);
