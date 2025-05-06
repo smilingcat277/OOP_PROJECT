@@ -101,7 +101,7 @@ void handlePlayerCollision(sf::RectangleShape& player, bool& levelComplete) {
         if (position.y + 50.f >= 200.f && position.y + 50.f <= 800.f && position.x <= 1200.f && position.x >= 1199.f){
             position.x = 1200.f;
         }
-        if (position.x >= 1200.f && position.x <= 1400.f && position.y + 50.f >= 800.f){
+        if (position.x >= 1200.f && position.x <= 1400.f && position.y + 50.f >= 800.f && position.y + 50.f <= 801.f){
             position.y = 750.f;
         }
         if (position.y >= 100.f && position.y + 50.f <= 200.f && position.x + 50.f >= 1500.f){
@@ -115,6 +115,18 @@ void handlePlayerCollision(sf::RectangleShape& player, bool& levelComplete) {
         }
         if (position.x + 50.f >= 1300.f && position.x <= 1400.f && position.y <= 700.f && position.y >= 699.f){
             position.y = 700.f;
+        }
+        if (position.y + 50.f >= 800.f && position.y + 50.f <= 1000.f && position.x <= 1400.f && position.x >= 1399.f){
+            position.x = 1400.f;
+        }
+        if (position.y >= 500.f && position.y <= 700.f && position.x <= 1400.f && position.x >= 1399.f){
+            position.x = 1400.f;
+        }
+        if (position.y + 50.f >= 600.f && position.y + 50.f <= 1000.f && position.x + 50.f >= 1500.f && position.x + 50.f <= 1501.f){
+            position.x = 1450.f;
+        }
+        if (position.x + 50.f >= 1500.f && position.x + 50.f <= 1600.f && position.y + 50.f >= 600.f && position.y + 50.f <= 601.f){
+            position.y = 550.f;
         }
 
         player.setPosition(position);
