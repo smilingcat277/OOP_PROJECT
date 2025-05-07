@@ -128,6 +128,9 @@ void handlePlayerCollision(sf::RectangleShape& player, bool& levelComplete) {
         if (position.x + 50.f >= 1500.f && position.x + 50.f <= 1600.f && position.y + 50.f >= 600.f && position.y + 50.f <= 601.f){
             position.y = 550.f;
         }
+        if (position.x >= 1400.f && position.x + 50.f <= 1600.f && position.y <= 500.f && position.y >= 499.f){
+            position.y = 500.f;
+        }
 
         player.setPosition(position);
     }
