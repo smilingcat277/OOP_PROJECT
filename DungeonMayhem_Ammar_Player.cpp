@@ -16,21 +16,18 @@ void handlePlayerMovement(sf::RectangleShape& player) {
     }
 }
 
-void handlePlayerCollision(sf::RectangleShape& player, bool& levelComplete) {
+void handlePlayerCollision(sf::RectangleShape& player, bool& level1Complete, bool&level2Complete) {
     sf::Vector2f position = player.getPosition();
     player.setPosition(position);
 
     //std::cout << position.x << " " << position.y << std::endl;
-    if (!levelComplete){
+    if (!level1Complete){
         if (position.x < 0.f){
             position.x = 0.f;
         }
-        if ((position.x + 50.f > 1600.f) && (position.y >= 500.f && position.y + 50.f <= 600.f)){
+        if ((position.x >= 1600.f) && (position.y >= 500.f && position.y + 50.f <= 600.f)){
             position = player.getPosition();
-            levelComplete = true;
-        }
-        else if ((position.x + 50.f) > 1600.f && position.x + 50.f < 1660){
-            position.x = 1550.f;
+            level1Complete = true;
         }
         if (position.y < 0.f){
             position.y = 0.f;
@@ -135,19 +132,42 @@ void handlePlayerCollision(sf::RectangleShape& player, bool& levelComplete) {
         player.setPosition(position);
     }
 
-    if (levelComplete){
+    if (!level2Complete && level1Complete){
         //std::cout << position.x << " " << position.y << std::endl;
         if (position.x <= 1600.f){
             position.x = 1600.f;
         }
-        if (position.x + 50.f >= 3200.f){
-            position.x = 3150.f;
+        if (position.x + 50.f >= 2300.f){
+            position.x = 2250.f;
         }
         if (position.y + 50.f >= 1000.f){
             position.y = 950.f;
         }
-        if (position.y <= 0.f){
-            position.y = 0.f;
+        if (position.y <= -1000.f && position.y >= -1001.f && position.x >= 1600.f && position.x + 50.f <= 1900.f){
+            position.y = -1000.f;
+        }
+        if (position.y <= -1000.f && position.y >= -1001.f && position.x >= 2000.f && position.x + 50.f <= 2300.f){
+            position.y = -1000.f;
+        }
+        if (position.y <= -1000.f && position.x >= 1900.f && position.x + 50.f <= 2000.f){
+            position = player.getPosition();
+            level2Complete = true;
+        }
+        player.setPosition(position);
+    }
+
+    if (level2Complete){
+        if (position.x <= 1150.f){
+            position.x = 1150.f;
+        }
+        if (position.x + 50.f >= 2750.f){
+            position.x = 2700.f;
+        }
+        if (position.y + 50.f >= -1000.f){
+            position.y = -1050.f;
+        }
+        if (position.y <= -2000.f){
+            position.y = -2000.f;
         }
         player.setPosition(position);
     }
