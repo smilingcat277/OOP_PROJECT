@@ -1,6 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include "map1.h"
+#include "maps.h"
 #include "player.h"
 #include "level.h"
 
@@ -8,11 +8,24 @@ int main(){
 
     bool level1Complete = false;
     bool level2Complete = false;
+
     bool transitioningCenter = false;
     sf::Vector2f targetCenter;
     bool transitioningView = false;
     sf::Vector2f targetViewSize;
     float viewTransitionSpeed = 0.5f;
+
+    sf::Texture textureGround;
+    if (!textureGround.loadFromFile("2010-09-04_08-50-38.jpg", sf::Rect(0, 0, 100, 100))){
+        std::cout << "Unable to open texture\n";
+        return -1;
+    }
+
+    sf::Texture textureWall;
+    if (!textureWall.loadFromFile("plainwallside.jpg", sf::IntRect(18, 18, 100, 100))){
+        std::cout << "Unable to open texture\n";
+        return -1;
+    }
 
     sf::RenderWindow window(sf::VideoMode(1600, 1000), "SFML works!");
     const float TILE_SIZE = 100.f;
@@ -29,13 +42,16 @@ int main(){
     door.setPosition(sf::Vector2f(1900.f, -1050.f));
     door.setFillColor(sf::Color::Red);
 
-    sf::RectangleShape map2(sf::Vector2f(700.f, 2000.f));
-    map2.setPosition(sf::Vector2f(1600.f, -1000.f));
-    map2.setFillColor(sf::Color(0xADD8E6));
+    sf::Vector2f map2Position(1500.f, -1000.f);
+    sf::Vector2f map3Position(1100.f, -2200.f);
 
-    sf::RectangleShape map3(sf::Vector2f(1600.f, 1000.f));
-    map3.setPosition(sf::Vector2f(1150.f, -2000.f));
-    map3.setFillColor(sf::Color(255, 192, 203));
+    // sf::RectangleShape map2(sf::Vector2f(700.f, 2000.f));
+    // map2.setPosition(sf::Vector2f(1600.f, -1000.f));
+    // map2.setFillColor(sf::Color(0xADD8E6));
+
+    // sf::RectangleShape map3(sf::Vector2f(1600.f, 1000.f));
+    // map3.setPosition(sf::Vector2f(1150.f, -2000.f));
+    // map3.setFillColor(sf::Color(255, 192, 203));
 
     sf::View camera;
     camera.setSize(sf::Vector2f(1000.f, 900.f));
@@ -94,11 +110,11 @@ int main(){
 
         window.clear();
 
-        drawMap1(window, map1, TILE_SIZE);
+        drawMap1(window, map1, TILE_SIZE, textureWall, textureGround);
+        drawMap2(window, map2, TILE_SIZE, textureWall, textureGround, map2Position);
+        drawMap3(window, map3, TILE_SIZE, textureWall, textureGround, map3Position);
 
-        window.draw(map2);
-        window.draw(map3);
-        window.draw(door);
+        //window.draw(map3);
         window.draw(text1);
         window.draw(player);
         window.display();
