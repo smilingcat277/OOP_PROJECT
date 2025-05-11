@@ -140,14 +140,14 @@ void handlePlayerCollision(sf::RectangleShape& player, bool& level1Complete, boo
         if (position.x + 50.f >= 2300.f){
             position.x = 2250.f;
         }
-        if (position.y + 50.f >= 1000.f){
-            position.y = 950.f;
+        if (position.y + 50.f >= 900.f){
+            position.y = 850.f;
         }
-        if (position.y <= -1000.f && position.y >= -1001.f && position.x >= 1600.f && position.x + 50.f <= 1900.f){
-            position.y = -1000.f;
+        if (position.y <= -900.f && /*position.y >= -1001.f &&*/ position.x >= 1600.f && position.x + 50.f <= 1900.f){
+            position.y = -900.f;
         }
-        if (position.y <= -1000.f && position.y >= -1001.f && position.x >= 2000.f && position.x + 50.f <= 2300.f){
-            position.y = -1000.f;
+        if (position.y <= -900.f && position.y >= -1001.f && position.x >= 2000.f && position.x + 50.f <= 2300.f){
+            position.y = -900.f;
         }
         if (position.y <= -1000.f && position.x >= 1900.f && position.x + 50.f <= 2000.f){
             position = player.getPosition();
