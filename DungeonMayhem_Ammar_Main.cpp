@@ -73,7 +73,7 @@ int main(){
 
         if (level2Complete && !transitioningView){
             transitioningView = true;
-            targetViewSize = sf::Vector2f(1650.f, 1050.f);
+            targetViewSize = sf::Vector2f(1650.f, 1200.f);
         }
 
         if (transitioningView){
@@ -89,7 +89,7 @@ int main(){
                 transitioningView = false;
 
                 transitioningCenter = true;
-                targetCenter = sf::Vector2f(1950.f, -1475.f); // center of map3
+                targetCenter = sf::Vector2f(1950.f, -1600.f); // center of map3
             }
         }
 
