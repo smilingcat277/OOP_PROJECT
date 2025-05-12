@@ -157,17 +157,18 @@ void handlePlayerCollision(sf::RectangleShape& player, bool& level1Complete, boo
     }
 
     if (level2Complete){
-        if (position.x <= 1150.f){
-            position.x = 1150.f;
+        //std::cout << position.x << " " << position.y << std::endl;
+        if (position.x <= 1200.f){
+            position.x = 1200.f;
         }
-        if (position.x + 50.f >= 2750.f){
-            position.x = 2700.f;
+        if (position.x + 50.f >= 2700.f){
+            position.x = 2650.f;
         }
-        if (position.y + 50.f >= -1000.f){
-            position.y = -1050.f;
+        if (position.y + 50.f >= -1100.f){
+            position.y = -1150.f;
         }
-        if (position.y <= -2000.f){
-            position.y = -2000.f;
+        if (position.y <= -2100.f){
+            position.y = -2100.f;
         }
         player.setPosition(position);
     }
