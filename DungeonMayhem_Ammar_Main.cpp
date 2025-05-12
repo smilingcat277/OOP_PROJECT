@@ -6,11 +6,12 @@
 #include "level.h"
 
 // Structure to hold the game state
-struct GameState {
-    sf::Vector2f playerPosition;
-    bool level1Complete;
-    bool level2Complete;
-    sf::View camera;
+class GameState {
+    public:
+        sf::Vector2f playerPosition;
+        bool level1Complete;
+        bool level2Complete;
+        sf::View camera;
 };
 
 // Function to save the game state
